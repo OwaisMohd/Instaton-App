@@ -8,10 +8,10 @@
 
     <ImageView
         android:id="@+id/ivGallery"
-        android:scaleType="fitCenter"
+        android:scaleType="centerCrop"
         android:layout_width="match_parent"
         android:layout_height="350dp"
-        tools:background="@android:color/darker_gray"
+        tools:background="@drawable/placeholder_image"
         tools:layout_height="400dp"/>
 
     <TextView
