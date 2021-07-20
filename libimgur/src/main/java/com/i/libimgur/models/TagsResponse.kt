@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class GalleryTagsResponse(
+data class TagsResponse(
     @Json(name = "data")
     val `data`: Data?,
     @Json(name = "status")
