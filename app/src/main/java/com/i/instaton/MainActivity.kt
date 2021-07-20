@@ -1,19 +1,45 @@
 package com.i.instaton
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.i.instaton.databinding.ActivityMainBinding
+import com.i.instaton.ui.stories.StoriesRecyclerAdapter
+import com.i.instaton.ui.stories.StoriesViewModel
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
+    private val storiesViewModel by viewModels<StoriesViewModel>()
+    private val storiesAdapter = StoriesRecyclerAdapter()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.rvStories.apply {
+            layoutManager = LinearLayoutManager(context,
+                    RecyclerView.HORIZONTAL,false)
+            adapter = storiesAdapter
+        }
+
+        setUpNav()
+
+        storiesViewModel.fetchTags()
+
+    }
+
+    private fun setUpNav() {
+        val navView: BottomNavigationView = binding.navView
 
         val navController = findNavController(R.id.nav_host_fragment)
 
@@ -28,5 +54,13 @@ class MainActivity : AppCompatActivity() {
           */
 
         navView.setupWithNavController(navController)
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        storiesViewModel.tags.observe(this){
+            storiesAdapter.submitList(it)
+        }
     }
 }

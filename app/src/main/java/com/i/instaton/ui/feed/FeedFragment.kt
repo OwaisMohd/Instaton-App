@@ -42,7 +42,7 @@ class FeedFragment : Fragment() {
         binding.rvGalleryFeed.layoutManager = LinearLayoutManager(requireContext())
         binding.rvGalleryFeed.adapter = feedAdapter
 
-        viewModel.feed.observe({lifecycle}){
+        viewModel.feed.observe(viewLifecycleOwner){
             feedAdapter.submitList(it)
         }
 
