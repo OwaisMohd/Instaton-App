@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.i.instaton.R
 import com.i.instaton.databinding.FragmentFeedBinding
 
@@ -19,11 +21,12 @@ class FeedFragment : Fragment() {
         fun newInstance() = FeedFragment()
     }
 
-    private val viewModel: FeedViewModel by activityViewModels()
+    private val viewModel: FeedViewModel by viewModels()
+    private val feedAdapter = FeedRecyclerAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val feed = arguments?.getString("feed")
+        val feed = arguments?.getString("feed") //TODO: turn into enum
         feed?.let{
             viewModel.updateFeed(it)
         }
@@ -36,8 +39,11 @@ class FeedFragment : Fragment() {
 
         val binding = FragmentFeedBinding.inflate(inflater,container,false)
 
+        binding.rvGalleryFeed.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvGalleryFeed.adapter = feedAdapter
+
         viewModel.feed.observe({lifecycle}){
-            Toast.makeText(requireContext(),"Downloaded ${it.size} data",Toast.LENGTH_SHORT).show()
+            feedAdapter.submitList(it)
         }
 
         return binding.root
