@@ -3,6 +3,7 @@ package com.i.libimgur.apis
 import com.i.libimgur.ImgurClient
 import com.i.libimgur.params.Section
 import junit.framework.Assert.assertNotNull
+import kotlinx.coroutines.runBlocking
 import org.junit.Test
 
 class ImgurAPIv3Tests {
@@ -11,20 +12,21 @@ class ImgurAPIv3Tests {
 
     @Test
     fun `get tags working`(){
+        runBlocking {
+            val response = api.getTags()
+            assertNotNull(response.body())
+        }
+    }
 
-        val response = api.getTags().execute()
+    @Test
+    fun `get galleries hot working`() = runBlocking {
+        val response = api.getGallery(Section.HOT)
         assertNotNull(response.body())
     }
 
     @Test
-    fun `get galleries hot working`(){
-        val response = api.getGallery(Section.HOT).execute()
-        assertNotNull(response.body())
-    }
-
-    @Test
-    fun `get galleries top working`(){
-        val response = api.getGallery(Section.TOP).execute()
+    fun `get galleries top working`()= runBlocking{
+        val response = api.getGallery(Section.TOP)
         assertNotNull(response.body())
     }
 }
