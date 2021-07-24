@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import coil.request.ImageRequest
 import com.i.instaton.R
 import com.i.instaton.databinding.FragmentFeedBinding
 

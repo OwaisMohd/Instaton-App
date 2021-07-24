@@ -10,15 +10,15 @@
     <androidx.cardview.widget.CardView
         android:layout_margin="3dp"
         app:cardCornerRadius="30dp"
-        android:layout_width="60dp"
-        android:layout_height="60dp">
+        android:layout_width="@dimen/story_head_image_size"
+        android:layout_height="@dimen/story_head_image_size">
 
         <ImageView
             android:id="@+id/ivStoryHead"
             android:scaleType="centerCrop"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:background="@android:color/holo_blue_bright"/>
+            android:background="@android:color/darker_gray"/>
 
     </androidx.cardview.widget.CardView>
 

@@ -24,7 +24,7 @@ data class Tag(
         @Json(name = "is_whitelisted")
         val isWhitelisted: Boolean?,
         @Json(name = "items")
-        val items: List<Image?>?,
+        val items: List<Image>?,
         @Json(name = "logo_destination_url")
         val logoDestinationUrl: Any?,
         @Json(name = "logo_hash")

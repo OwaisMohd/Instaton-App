@@ -8,13 +8,14 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import coil.request.ImageRequest
 import com.i.instaton.R
 import com.i.instaton.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val storiesViewModel by viewModels<StoriesViewModel>()
+    private val storiesViewModel by viewModels<HomeViewModel>()
     private val storiesAdapter = StoriesRecyclerAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {

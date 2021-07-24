@@ -31,7 +31,9 @@ class StoriesRecyclerAdapter :
         holder.binding.root.apply {
             setOnClickListener {
                 context.startActivity(
-                        Intent(context,StoryActivity::class.java)
+                        Intent(context,StoryActivity::class.java).apply {
+                            putExtra("tag",tag.name)
+                        }
                 )
             }
         }

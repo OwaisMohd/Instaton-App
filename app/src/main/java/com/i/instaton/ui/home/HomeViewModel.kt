@@ -9,7 +9,7 @@ import com.i.libimgur.models.Tag
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class StoriesViewModel:ViewModel() {
+class HomeViewModel:ViewModel() {
     private val repo = ImgurRepository()
     private val _tags = MutableLiveData<List<Tag>>()
 

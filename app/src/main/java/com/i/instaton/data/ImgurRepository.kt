@@ -13,12 +13,16 @@ class ImgurRepository {
         val response = api.getGallery(Section.HOT)
         return response.body()?.data as List<Image>?
     }
-    suspend fun getTopFeed(): List<Image>?{
+    suspend fun getTopFeed(): List<Image>? {
         val response = api.getGallery(Section.TOP)
         return response.body()?.data as List<Image>?
     }
-    suspend fun getTags():List<Tag>?{
+    suspend fun getTags(): List<Tag>? {
         val response = api.getTags()
         return response.body()?.data?.tags as List<Tag>?
+    }
+    suspend fun getTagGallery(tagName : String):List<Image>?{
+        val response = api.getTagGallery(tagName)
+        return response.body()?.data?.items
     }
 }
