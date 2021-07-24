@@ -6,7 +6,7 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class Tag(
         @Json(name = "accent")
-        val accent: Any?,
+        val accent: String?,
         @Json(name = "background_hash")
         val backgroundHash: String?,
         @Json(name = "background_is_animated")
@@ -23,6 +23,8 @@ data class Tag(
         val isPromoted: Boolean?,
         @Json(name = "is_whitelisted")
         val isWhitelisted: Boolean?,
+        @Json(name = "items")
+        val items: List<Image?>?,
         @Json(name = "logo_destination_url")
         val logoDestinationUrl: Any?,
         @Json(name = "logo_hash")

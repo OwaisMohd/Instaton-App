@@ -1,18 +1,15 @@
-package com.i.instaton
+package com.i.instaton.ui.home
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.i.instaton.R
 import com.i.instaton.databinding.ActivityMainBinding
-import com.i.instaton.ui.stories.StoriesRecyclerAdapter
-import com.i.instaton.ui.stories.StoriesViewModel
 
 class MainActivity : AppCompatActivity() {
 

@@ -1,14 +1,15 @@
-package com.i.instaton.ui.stories
+package com.i.instaton.ui.home
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.i.instaton.databinding.ListItemStoryHeadBinding
+import com.i.instaton.ui.story.StoryActivity
 import com.i.libimgur.models.Tag
 
 class StoriesRecyclerAdapter :
@@ -27,6 +28,13 @@ class StoriesRecyclerAdapter :
         val tag = getItem(position)
         holder.binding.tvStoryHead.text = tag.displayName
         holder.binding.ivStoryHead.load("https://i.imgur.com/${tag.backgroundHash}.jpg")
+        holder.binding.root.apply {
+            setOnClickListener {
+                context.startActivity(
+                        Intent(context,StoryActivity::class.java)
+                )
+            }
+        }
     }
 
     private class StoriesDiffCallback: DiffUtil.ItemCallback<Tag>(){
