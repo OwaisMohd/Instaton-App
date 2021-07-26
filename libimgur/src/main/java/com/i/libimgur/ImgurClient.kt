@@ -8,7 +8,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 object ImgurClient {
 
-    private const val API_KEY = "5534231d57901cc"
+    private const val API_KEY = "YOUR-API-KEY"
     //TODO: ADD YOUR API KEY HERE FOR IT TO WORK
     //TODO: should be in app not in library
 
